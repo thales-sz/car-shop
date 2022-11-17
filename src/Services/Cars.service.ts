@@ -1,11 +1,17 @@
+import Car from '../Domains/Car';
 import ICar from '../Interfaces/ICar';
 import CarODM from '../Models/CarsODM';
 
 class CarService {
-  public async create(newCar: ICar): Promise<ICar> {
+  private carDomain(car: ICar): Car {
+    return new Car(car);
+  }
+
+  public async create(newCar: ICar): Promise<Car> {
     const carODM = new CarODM();
-    const result = carODM.create(newCar);
-    return result;
+    const response = await carODM.create(newCar);
+    const car = this.carDomain(response);
+    return car;
   }
 }
 
