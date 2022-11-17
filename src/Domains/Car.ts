@@ -8,16 +8,20 @@ export default class Car {
   protected year: number;
   protected buyValue: number;
   protected color: string;
-  protected status?: boolean | undefined;
+  protected status?: boolean;
 
   constructor(car: ICar) {
     this.id = car.id;
     this.seatsQty = car.seatsQty;
     this.doorsQty = car.doorsQty;
-    this.status = car.status;
+    this.status = car.status || false;
     this.year = car.year;
     this.color = car.color;
     this.buyValue = car.buyValue;
     this.model = car.model;
+  }
+
+  public getModel() {
+    return this.model;
   }
 }
