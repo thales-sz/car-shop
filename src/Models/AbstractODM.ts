@@ -22,15 +22,19 @@ abstract class AbstractODM<T> {
     return this.model.create({ ...obj });
   }
 
-  public async get() {
+  public async get(): Promise<T[]> {
     return this.model.find();
   }
 
-  public async update(_id: string, obj: Partial<T>): Promise<T | null> {
-    if (!isValidObjectId(_id)) throw Error('Invalid Mongo id');
+  public async getById(id: string): Promise<T | null> {
+    return this.model.findById(id);
+  }
+
+  public async update(id: string, obj: Partial<T>): Promise<T | null> {
+    if (!isValidObjectId(id)) throw Error('Invalid Mongo id');
 
     return this.model.findByIdAndUpdate(
-      { _id },
+      { id },
       { ...obj } as UpdateQuery<T>,
       { new: true },
     );
