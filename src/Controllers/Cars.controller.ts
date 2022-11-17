@@ -18,4 +18,13 @@ export default class CarController {
       this.next(error);
     }
   }
+
+  public async get() {
+    try {
+      const response = await this.service.get();
+      return this.res.status(200).json(response);
+    } catch (error) {
+      this.next(error);
+    }
+  }
 }

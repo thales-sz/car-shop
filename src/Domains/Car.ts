@@ -1,7 +1,7 @@
 import ICar from '../Interfaces/ICar';
 
 export default class Car {
-  protected id?: string | undefined;
+  protected id?: string;
   private doorsQty: number;
   private seatsQty: number;
   protected model: string;
@@ -14,7 +14,7 @@ export default class Car {
     this.id = car.id;
     this.seatsQty = car.seatsQty;
     this.doorsQty = car.doorsQty;
-    this.status = car.status || false;
+    this.status = car.status;
     this.year = car.year;
     this.color = car.color;
     this.buyValue = car.buyValue;
