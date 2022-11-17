@@ -1,3 +1,3 @@
-import carsRoute from './cars.routes';
+import carsRoute from './Cars.routes';
 
 export default carsRoute;

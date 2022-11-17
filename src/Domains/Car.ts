@@ -11,6 +11,7 @@ export default class Car {
   protected status?: boolean | undefined;
 
   constructor(car: ICar) {
+    this.id = car.id;
     this.seatsQty = car.seatsQty;
     this.doorsQty = car.doorsQty;
     this.status = car.status;
