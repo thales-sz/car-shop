@@ -4,14 +4,8 @@ import CarService from '../Services/Cars.service';
 
 export default class CarController {
   private service: CarService;
-  private req: Request;
-  private res: Response;
-  private next: NextFunction;
 
-  constructor(req: Request, res: Response, next: NextFunction) {
-    this.req = req;
-    this.res = res;
-    this.next = next;
+  constructor(private req: Request, private res: Response, private next: NextFunction) {
     this.service = new CarService();
   }
 
@@ -19,7 +13,7 @@ export default class CarController {
     const newCar: ICar = this.req.body;
     try {
       const result = await this.service.create(newCar);
-      return this.res.status(201).json({ result });
+      return this.res.status(201).json({ ...result });
     } catch (error) {
       this.next(error);
     }
