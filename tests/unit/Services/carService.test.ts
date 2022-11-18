@@ -6,6 +6,7 @@ import Car from '../../../src/Domains/Car';
 import CarService from '../../../src/Services/Cars.service';
 
 const idMock = '6377777fbdc1fc289e0a4070';
+const idInvalidMock = '63774070';
 
 const returnMock = {
   id: '6377777fbdc1fc289e0a4070',
@@ -16,6 +17,17 @@ const returnMock = {
   color: 'White',
   buyValue: 15.999,
   model: 'Mock',
+};
+
+const returnUndefinedMock = {
+  id: undefined,
+  seatsQty: undefined,
+  doorsQty: undefined,
+  status: undefined,
+  year: undefined,
+  color: undefined,
+  buyValue: undefined,
+  model: undefined,
 };
 
 const requestMock = {
@@ -56,5 +68,13 @@ describe('Camada Service de Car', () => {
     const result = await service.getById(idMock);
 
     expect(result).to.be.eqls(instance);
+  });
+
+  it('Deve retornar um erro ao chamar "getById" com id invalido', async function () {
+    Sinon.stub(Model, 'findById').resolves();
+    const service = new CarService();
+    const result = await service.getById(idInvalidMock);
+
+    expect(result).to.be.eqls(returnUndefinedMock);
   });
 });
