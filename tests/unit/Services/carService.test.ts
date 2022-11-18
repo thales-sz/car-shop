@@ -5,6 +5,8 @@ import Sinon from 'sinon';
 import Car from '../../../src/Domains/Car';
 import CarService from '../../../src/Services/Cars.service';
 
+const idMock = '6377777fbdc1fc289e0a4070';
+
 const returnMock = {
   id: '6377777fbdc1fc289e0a4070',
   seatsQty: 5,
@@ -31,8 +33,8 @@ describe('Camada Service de Car', () => {
   afterEach(function () {
     Sinon.restore();
   });
-  
-  it('Ao chamar a função "create" com sucesso é registrado um novo carro', async function () {
+
+  it('Deve registrar um novo carro ao chamar a função "create" com sucesso', async function () {
     Sinon.stub(Model, 'create').resolves(returnMock);
     const service = new CarService();
     const result = await service.create(requestMock);
@@ -46,5 +48,13 @@ describe('Camada Service de Car', () => {
     const result = await service.get();
 
     expect(result).to.be.eqls([instance, instance, instance]);
+  });
+
+  it('Deve retornar um car especifico pelo id da req ao chamar "getById"', async function () {
+    Sinon.stub(Model, 'findById').resolves(returnMock);
+    const service = new CarService();
+    const result = await service.getById(idMock);
+
+    expect(result).to.be.eqls(instance);
   });
 });
