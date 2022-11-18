@@ -8,7 +8,7 @@ class ErrorHandler {
         next();
         break;
       case 'NotFoundError':
-        res.status(404).json({ message: 'Not found' });
+        res.status(404).json({ message: 'Car not found' });
         next();
         break;
       default:

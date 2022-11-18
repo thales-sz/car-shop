@@ -21,13 +21,14 @@ class CarService {
     return carsResponse;
   }
 
-  public async getById(id: string): Promise<Car | undefined> {
+  public async getById(id: string): Promise<Car | boolean> {
     const carODM = new CarODM();
     const response = await carODM.getById(id);
     if (response) {
       const car = this.carDomain(response);
       return car;
     }
+    return false;
   }
 }
 
