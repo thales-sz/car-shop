@@ -1,5 +1,5 @@
 import * as express from 'express';
-import MotorcycleController from '../Controllers/Cars.controller';
+import MotorcycleController from '../Controllers/Motorcycle.controller';
 
 const router = express.Router();
 
