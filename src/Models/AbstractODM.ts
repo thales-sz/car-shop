@@ -3,6 +3,7 @@ import {
   models,
   Schema,
   model,
+  isValidObjectId,
 } from 'mongoose';
 
 abstract class AbstractODM<T> {
@@ -29,6 +30,8 @@ abstract class AbstractODM<T> {
   }
 
   public async update(id: string, obj: Partial<T>): Promise<T | null> {
+    if (!isValidObjectId(id)) return null;
+
     return this.model.findByIdAndUpdate(
       { _id: id },
       { ...obj },

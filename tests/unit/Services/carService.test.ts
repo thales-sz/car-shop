@@ -66,4 +66,20 @@ describe('Camada Service de Car', () => {
 
     expect(result).to.be.eqls(false);
   });
+
+  it('Deve atualizar um carro ao chamar a função "update" com sucesso', async function () {
+    Sinon.stub(Model, 'findByIdAndUpdate').resolves(returnMock);
+    const service = new CarService();
+    const result = await service.update(idMock, requestMock);
+
+    expect(result).to.be.eqls(instance);
+  });
+
+  it('Deve retornar um erro ao chamar "update" com id invalido', async function () {
+    Sinon.stub(Model, 'findByIdAndUpdate').resolves();
+    const service = new CarService();
+    const result = await service.update(idInvalidMock, requestMock);
+
+    expect(result).to.be.eqls(false);
+  });
 });
