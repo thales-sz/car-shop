@@ -30,6 +30,16 @@ class CarService {
     }
     return false;
   }
+
+  public async update(id: string, body: ICar): Promise<Car | boolean> {
+    const carODM = new CarODM();
+    const response = await carODM.update(id, body);
+    if (response) {
+      const car = this.carDomain(response);
+      return car;
+    }
+    return false;
+  }
 }
 
 export default CarService;
