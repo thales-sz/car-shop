@@ -19,17 +19,6 @@ const returnMock = {
   model: 'Mock',
 };
 
-const returnUndefinedMock = {
-  id: undefined,
-  seatsQty: undefined,
-  doorsQty: undefined,
-  status: undefined,
-  year: undefined,
-  color: undefined,
-  buyValue: undefined,
-  model: undefined,
-};
-
 const requestMock = {
   model: 'Mock',
   year: 2022,
@@ -75,6 +64,6 @@ describe('Camada Service de Car', () => {
     const service = new CarService();
     const result = await service.getById(idInvalidMock);
 
-    expect(result).to.be.eqls(returnUndefinedMock);
+    expect(result).to.be.eqls(false);
   });
 });
