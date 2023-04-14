@@ -37,14 +37,14 @@ npm start
 npm run dev
 ```
 
-* Para execução local do projeto é necessário ter o MongoDB instalado e iniciado
+* To run local you MongoDB
 * As requisições devem ser feitas na porta 3001
 
 ### Para executar com Docker
 
 ```bash
 docker-compose up -d
-docker exec -it car_shop /bin/bash
+docker exec -it payever_node /bash
 npm install
 ```
 
